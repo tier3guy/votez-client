@@ -4,6 +4,7 @@ import { BsGenderTrans } from 'react-icons/bs';
 import { GiMicrophone } from 'react-icons/gi';
 import { BiMoneyWithdraw } from 'react-icons/bi';
 import { LuUserCog } from 'react-icons/lu';
+import Title from '../../components/Title';
 
 const Sidebar = () => {
     return (
@@ -60,20 +61,6 @@ const Tab: React.FC<TabProps> = ({ label, isActive, icon }) => {
             <p className={`${isActive ? 'text-blue-500 font-semibold' : 'text-gray-600'}`}>
                 {label}
             </p>
-        </div>
-    );
-};
-
-interface TitleProps {
-    label: string;
-}
-
-const Title: React.FC<TitleProps> = ({ label }) => {
-    return (
-        <div className="flex items-center gap-4 px-4">
-            <div className="h-[1px] bg-gray-300 flex-1" />
-            <p className="text-xs text-gray-600">{label}</p>
-            <div className="h-[1px] bg-gray-300 flex-1" />
         </div>
     );
 };

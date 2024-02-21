@@ -3,6 +3,8 @@ import Logo from '../../../components/Logo';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 import { CiMail, CiLock } from 'react-icons/ci';
+import IntroImage from '../../../assets/images/intro-img.jpeg';
+import AppDemo from '../../../assets/images/app-demo.jpeg';
 
 const LoginPage = () => {
     const [email, setEmail] = useState<string>('');
@@ -58,7 +60,14 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="h-full flex-1 bg-blue-50"></div>
+            <div className="h-full flex-1 bg-blue-50 relative">
+                <div className="-translate-y-1/3 top-1/2 absolute">
+                    <img src={IntroImage} alt="intro" className="object-contain w-2/3 m-auto" />
+                    <div className="w-3/4 p-2 bg-white rounded-md m-auto z-10 shadow-md -translate-y-2/3 translate-x-1/4">
+                        <img src={AppDemo} alt="intro" className="m-auto " />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
