@@ -1,46 +1,108 @@
-# Getting Started with Create React App
+# Votez 🗳️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Empowering anonymous polling through blockchain technology.
 
-## Available Scripts
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/your-username/Votez)](https://github.com/tier3guy/votez-client/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/your-username/Votez)](https://github.com/tier3guy/votez-client/pulls)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   [About](#about)
+-   [Features](#features)
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [Blockchain Integration](#blockchain-integration)
+-   [Contributing](#contributing)
+-   [License](#license)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## About
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Votez is a social media platform designed to facilitate anonymous polling using blockchain technology. Users can create polls, and others can vote on them while ensuring the privacy and integrity of the voting process.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✅ **Anonymous Polls:** Users can create polls and vote without revealing their identities.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🔗 **Blockchain Integration:** Utilizes blockchain to secure and validate poll transactions.
 
-### `npm run eject`
+🌐 **User-Friendly Interface:** Intuitive design for a seamless user experience.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+🔐 **Security:** Ensures the confidentiality and integrity of poll data.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+📊 **Real-time Results:** Instantly view the results as votes are cast.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Installation
 
-## Learn More
+1. Clone the repository:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone https://github.com/tier3guy/votez-client
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Install dependencies:
+
+```bash
+cd votez-client
+npm install
+```
+
+3. Set up the database and configure blockchain integration.
+
+4. Configure the .env file as of explained in the .env.example file
+
+5. Run the application:
+
+```bash
+npm start
+```
+
+---
+
+## Usage
+
+1. Sign up or log in to your Votez account.
+
+2. Create a new poll by providing a question and options.
+
+3. Share your poll link with others.
+
+4. Users can anonymously vote on the poll.
+
+5. Explore real-time results and analytics.
+
+---
+
+## Blockchain Integration
+
+Votez leverages blockchain technology to enhance the security and transparency of the polling process. Each vote is recorded as a transaction on the blockchain, providing a tamper-resistant and verifiable record.
+
+---
+
+## Contributing
+
+Contributions are welcome! Follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/your-feature`.
+5. Submit a pull request.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Feel free to reach out to us if you have any questions or feedback. Happy coding! 🚀
