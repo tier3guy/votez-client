@@ -4,6 +4,12 @@ import Logo from '../../components/Logo';
 import { RiLeafFill } from 'react-icons/ri';
 import { CiSearch } from 'react-icons/ci';
 import { IoChevronDown } from 'react-icons/io5';
+import { BiSolidBarChartAlt2 } from "react-icons/bi";
+import { FaBookmark, FaUserFriends } from "react-icons/fa";
+import { PiTelevisionSimpleFill } from "react-icons/pi";
+import { FaGear } from "react-icons/fa6";
+import { IoLogOut } from "react-icons/io5";
+
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');
@@ -53,17 +59,53 @@ const AccountButton = () => {
                     />
                 </button>
             </div>
-            <div
-                className={`absolute right-0 mt-2 overflow-hidden  ${
-                    isAccountModalOpened ? 'w-fit h-fit' : 'w-0 h-0'
-                }`}
-            >
-                <div className="p-1">
-                    <div className="bg-white shadow rounded-lg w-[300px] min-h-12"></div>
+            <AccountList isOpen={isAccountModalOpened} />
+        </div>
+    );
+};
+
+const AccountList = ({ isOpen }: { isOpen: boolean }) => {
+    const accountItems = [
+        { icon: <BiSolidBarChartAlt2 />, label: "My Polls", isFirst: true },
+        { icon: <FaBookmark />, label: "Bookmarks" },
+        { icon: <FaUserFriends />, label: "Friends" },
+        { icon: <PiTelevisionSimpleFill />, label: "My Channels" },
+        { icon: <FaGear />, label: "Settings" },
+        { icon: <IoLogOut />, label: "Logout" }
+    ];
+
+    return (
+        <div
+            className={`absolute right-0 mt-2 z-10 overflow-hidden transition-transform origin-top-right ${
+                isOpen ? 'w-fit h-fit transform translate-x-0 translate-y-0' : 'w-0 h-0'
+            }`}
+        >
+            <div className="p-1 transition-opacity duration-300 origin-top-right">
+                <div className="bg-white shadow rounded-lg w-[300px] min-h-12">
+                    <ul className="flex flex-col text-gray-600 text-sm">
+                        {accountItems.map(({ icon, label, isFirst }, index) => (
+                            <AccountListItem
+                                key={index}
+                                icon={icon}
+                                label={label}
+                                isFirst={isFirst}
+                            />
+                        ))}
+                    </ul>
                 </div>
             </div>
         </div>
     );
 };
 
+const AccountListItem = ({ icon, label, isFirst }: { icon: React.ReactNode; label: string; isFirst?: boolean }) => {
+    return (
+        <li className={`flex items-center gap-3 no-underline cursor-pointer px-16 py-4 border-b-[1px] ${isFirst ? 'rounded-t-lg bg-gray-100 text-blue-500' : ''} hover:bg-gray-100 hover:text-blue-500 transition-colors`}>
+            {icon}
+            {label}
+        </li>
+    );
+};
+
 export default Navbar;
+
