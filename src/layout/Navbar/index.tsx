@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import Input from '../../components/Input';
 import Logo from '../../components/Logo';
+import Button from '../../components/Button';
+
 import { RiLeafFill } from 'react-icons/ri';
 import { CiSearch } from 'react-icons/ci';
-import { IoChevronDown } from 'react-icons/io5';
+import { IoChevronDown, IoLogOut } from 'react-icons/io5';
 import { FaBookmark, FaUserFriends } from "react-icons/fa";
-import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { FaGear } from "react-icons/fa6";
-import { IoLogOut } from "react-icons/io5";
-import Button from '../../components/Button';
 import { BiSolidBarChartAlt2 } from 'react-icons/bi';
-import { PiTelevisionSimpleBold } from 'react-icons/pi';
+import { PiTelevisionSimpleBold, PiTelevisionSimpleFill } from 'react-icons/pi';
+
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');
@@ -76,11 +76,15 @@ const AccountButton = () => {
                     />
                 </button>
             </div>
+
+            {/* done by @kamya */}
             <AccountList isOpen={isAccountModalOpened} />
         </div>
     );
 };
 
+
+// Code written by @kamya
 const AccountList = ({ isOpen }: { isOpen: boolean }) => {
     const accountItems = [
         { icon: <BiSolidBarChartAlt2 />, label: "My Polls", isFirst: true },
