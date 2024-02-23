@@ -1,56 +1,79 @@
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 import Input from '../../components/Input';
 import Logo from '../../components/Logo';
 import Button from '../../components/Button';
+import ModalWrapper from '../../components/Modals/ModalWrapper';
 
 import { RiLeafFill } from 'react-icons/ri';
 import { CiSearch } from 'react-icons/ci';
 import { IoChevronDown, IoLogOut } from 'react-icons/io5';
-import { FaBookmark, FaUserFriends } from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
+import { FaBookmark, FaUserFriends } from 'react-icons/fa';
+import { FaGear } from 'react-icons/fa6';
 import { BiSolidBarChartAlt2 } from 'react-icons/bi';
 import { PiTelevisionSimpleBold, PiTelevisionSimpleFill } from 'react-icons/pi';
 
+const CreatePollModal = lazy(() => import('../Modals/CreatePollModal'));
+const CreateChannelModal = lazy(() => import('../Modals/CreateChannelModal'));
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');
+    const [modalVisibility, setModalVisibility] = useState<boolean>(false);
+    const [modalComp, setModalComp] = useState<'CreatePollModal' | 'CreateChannelModal' | ''>('');
 
     return (
-        <div className="h-full border-b-[1px] border-gray-300 w-full flex">
-            <div className="w-1/5 h-full  border-e-[1px] border-gray-300 flex items-center px-4">
-                <Logo />
-            </div>
-            <div className="flex-1 flex items-center  justify-between px-4 py-2">
-                <div className="flex items-center gap-3">
-                    <Button
-                        label="Create Poll"
-                        className="bg-gray-50 text-blue-500 hover:text-white duration-100"
-                        labelClassName="font-medium"
-                        icon={<BiSolidBarChartAlt2 />}
-                    />
-                    <Button
-                        label="Create Channel"
-                        className="bg-gray-50 text-blue-500 hover:text-white duration-100"
-                        labelClassName="font-medium"
-                        icon={<PiTelevisionSimpleBold />}
-                    />
+        <>
+            <ModalWrapper visible={modalVisibility}>
+                {modalComp === 'CreatePollModal' ? (
+                    <CreatePollModal setVisible={setModalVisibility} visible={modalVisibility} />
+                ) : modalComp === 'CreateChannelModal' ? (
+                    <CreateChannelModal setVisible={setModalVisibility} visible={modalVisibility} />
+                ) : null}
+            </ModalWrapper>
+
+            <div className="h-full border-b-[1px] border-gray-300 w-full flex">
+                <div className="w-1/5 h-full  border-e-[1px] border-gray-300 flex items-center px-4">
+                    <Logo />
                 </div>
-                <div className="flex items-center gap-3">
-                    <Input
-                        value={searchQuery}
-                        setValue={setSearchQuery}
-                        placeholder="Search followers or another"
-                        icon={<CiSearch />}
-                        inputClassName="text-sm"
-                        className="border-[1px]"
-                        iconClassName="font-light"
-                    />
-                    <div className="h-full border-gray-300 border-s-[1px] grid place-content-center ps-3">
-                        <AccountButton />
+                <div className="flex-1 flex items-center  justify-between px-4 py-2">
+                    <div className="flex items-center gap-3">
+                        <Button
+                            label="Create Poll"
+                            className="bg-gray-50 text-blue-500 hover:text-white duration-100"
+                            labelClassName="font-medium"
+                            icon={<BiSolidBarChartAlt2 />}
+                            onClick={() => {
+                                setModalComp('CreatePollModal');
+                                setModalVisibility(true);
+                            }}
+                        />
+                        <Button
+                            label="Create Channel"
+                            className="bg-gray-50 text-blue-500 hover:text-white duration-100"
+                            labelClassName="font-medium"
+                            icon={<PiTelevisionSimpleBold />}
+                            onClick={() => {
+                                setModalComp('CreateChannelModal');
+                                setModalVisibility(true);
+                            }}
+                        />
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <Input
+                            value={searchQuery}
+                            setValue={setSearchQuery}
+                            placeholder="Search followers or another"
+                            icon={<CiSearch />}
+                            inputClassName="text-sm"
+                            className="border-[1px]"
+                            iconClassName="font-light"
+                        />
+                        <div className="h-full border-gray-300 border-s-[1px] grid place-content-center ps-3">
+                            <AccountButton />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
@@ -83,16 +106,15 @@ const AccountButton = () => {
     );
 };
 
-
 // Code written by @kamya
 const AccountList = ({ isOpen }: { isOpen: boolean }) => {
     const accountItems = [
-        { icon: <BiSolidBarChartAlt2 />, label: "My Polls", isFirst: true },
-        { icon: <FaBookmark />, label: "Bookmarks" },
-        { icon: <FaUserFriends />, label: "Friends" },
-        { icon: <PiTelevisionSimpleFill />, label: "My Channels" },
-        { icon: <FaGear />, label: "Settings" },
-        { icon: <IoLogOut />, label: "Logout" }
+        { icon: <BiSolidBarChartAlt2 />, label: 'My Polls', isFirst: true },
+        { icon: <FaBookmark />, label: 'Bookmarks' },
+        { icon: <FaUserFriends />, label: 'Friends' },
+        { icon: <PiTelevisionSimpleFill />, label: 'My Channels' },
+        { icon: <FaGear />, label: 'Settings' },
+        { icon: <IoLogOut />, label: 'Logout' },
     ];
 
     return (
@@ -119,9 +141,21 @@ const AccountList = ({ isOpen }: { isOpen: boolean }) => {
     );
 };
 
-const AccountListItem = ({ icon, label, isFirst }: { icon: React.ReactNode; label: string; isFirst?: boolean }) => {
+const AccountListItem = ({
+    icon,
+    label,
+    isFirst,
+}: {
+    icon: React.ReactNode;
+    label: string;
+    isFirst?: boolean;
+}) => {
     return (
-        <li className={`flex items-center gap-3 no-underline cursor-pointer px-16 py-4 border-b-[1px] ${isFirst ? 'rounded-t-lg bg-gray-100 text-blue-500' : ''} hover:bg-gray-100 hover:text-blue-500 transition-colors`}>
+        <li
+            className={`flex items-center gap-3 no-underline cursor-pointer px-16 py-4 border-b-[1px] ${
+                isFirst ? 'rounded-t-lg bg-gray-100 text-blue-500' : ''
+            } hover:bg-gray-100 hover:text-blue-500 transition-colors`}
+        >
             {icon}
             {label}
         </li>
@@ -129,4 +163,3 @@ const AccountListItem = ({ icon, label, isFirst }: { icon: React.ReactNode; labe
 };
 
 export default Navbar;
-
