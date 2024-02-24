@@ -1,6 +1,19 @@
+// Internal Imports
+import { LazyExoticComponent, lazy } from 'react';
+
 // External Imports
 import { clsx, ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+
+/**
+ * Lazy loads a component based on the provided component path.
+ *
+ * @param componentPath - The path to the component file.
+ * @returns Lazily imported component.
+ */
+export const lazyLoadComponent = (componentPath: string): LazyExoticComponent<any> => {
+    return lazy(() => import(/* webpackChunkName: "[request]" */ `../${componentPath}`));
+};
 
 /**
  * Combines multiple class names using both clsx and Tailwind CSS's twMerge.
