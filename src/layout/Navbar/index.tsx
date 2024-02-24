@@ -169,7 +169,7 @@ const AccountListItem = ({
 }) => {
     return (
         <li
-            className={`flex items-center justify-between no-underline cursor-pointer px-8 py-4 border-b-[1px] hover:bg-gray-100 hover:text-blue-500 transition-colors`}
+            className={`flex items-center justify-between no-underline cursor-pointer px-8 py-4 border-b-[1px] hover:bg-gray-50 hover:text-blue-600 transition-colors`}
         >
             <div className="flex items-center gap-3">
                 <div className="text-lg">{icon}</div>

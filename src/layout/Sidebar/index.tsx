@@ -93,7 +93,9 @@ const Tab: React.FC<TabProps> = ({ label, isActive, icon, onClick = () => {} }) 
                     {icon}
                 </div>
             ) : null}
-            <p className={`${isActive ? 'text-blue-500' : 'text-gray-600'}`}>{label}</p>
+            <p className={`${isActive ? 'text-blue-500' : 'text-gray-600'} font-semibold`}>
+                {label}
+            </p>
         </div>
     );
 };
